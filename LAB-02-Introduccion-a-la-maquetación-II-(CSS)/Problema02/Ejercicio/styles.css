@@ -1,3 +1,23 @@
+/* =========================================
+   1. VARIABLES Y RESET
+   ========================================= */
+:root {
+  --color-bg: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-text-muted: #444444;
+  --color-accent: #333333;
+  --color-border: #cccccc;
+  
+  --font-main: system-ui, sans-serif;
+  
+  --spacing-sm: 10px;
+  --spacing-md: 16px;
+  --spacing-lg: 30px;
+  --radius: 4px;
+  --transition: 0.3s ease;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,9 +25,9 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  background: #f4f4f4;
-  color: #111;
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.5;
 }
 
@@ -18,19 +38,26 @@ img {
 }
 
 a {
-  color: #111;
+  color: var(--color-text);
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 .container {
   width: min(1100px, 100%);
   margin: 0 auto;
-  padding: 16px;
+  padding: var(--spacing-md);
 }
 
+/* =========================================
+   2. HEADER Y NAVEGACIÓN (Flexbox)
+   ========================================= */
 header {
-  background: #fff;
-  border-bottom: 1px solid #ccc;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Menú fijo solicitado en instrucciones */
 }
 
 header .container {
@@ -48,65 +75,128 @@ header h1 {
 nav a {
   margin-left: 12px;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
+/* Efecto hover en enlaces */
+nav a:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+/* =========================================
+   3. SECCIONES GENERALES Y HERO
+   ========================================= */
 .hero {
   padding: 40px 0;
-  background: #fff;
+  background: var(--color-surface);
+  text-align: center;
 }
 
 .hero h2 {
   font-size: 2rem;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .section {
-  padding: 30px 0;
+  padding: var(--spacing-lg) 0;
 }
 
 .section h2 {
   font-size: 1.6rem;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .section p {
-  max-width: 680px;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-md);
 }
 
+/* =========================================
+   4. GALERÍA (CSS Grid y Hover en imagen)
+   ========================================= */
 .gallery {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 1fr; /* Móvil: 1 columna por defecto */
+  gap: var(--spacing-md);
 }
 
 .gallery article {
-  background: #fff;
-  padding: 10px;
-  border: 1px solid #ddd;
+  background: var(--color-surface);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
 }
 
 .gallery article h3 {
-  margin: 10px 0 6px;
+  margin: var(--spacing-sm) 0 6px;
   font-size: 1rem;
 }
 
 .gallery article p {
-  margin: 0;
-  color: #444;
+  color: var(--color-text-muted);
   font-size: 0.95rem;
 }
 
-#info img {
-  margin: 16px 0;
-  border: 1px solid #ddd;
+/* Contenedor de imagen y efecto hover */
+.img-container {
+  position: relative;
+  overflow: hidden;
 }
 
+.img-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  text-align: center;
+  padding: var(--spacing-sm);
+}
+
+.img-container:hover .overlay {
+  opacity: 1; /* Efecto hover solicitado en imágenes */
+}
+
+/* =========================================
+   5. INFORMACIÓN (Uso de Float)
+   ========================================= */
+/* Clearfix para evitar que el float rompa el layout */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#info img {
+  float: left; /* Uso de float requerido */
+  margin: 0 var(--spacing-md) var(--spacing-md) 0;
+  border: 1px solid var(--color-border);
+  max-width: 100%;
+}
+
+/* =========================================
+   6. CONTACTO Y FORMULARIO (Flexbox)
+   ========================================= */
 form {
-  display: grid;
+  display: flex; /* Flexbox en formulario requerido */
+  flex-direction: column;
   gap: 12px;
-  background: #fff;
-  padding: 16px;
-  border: 1px solid #ddd;
+  background: var(--color-surface);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 label {
@@ -114,39 +204,87 @@ label {
   font-size: 0.95rem;
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   font: inherit;
 }
 
 button {
   width: fit-content;
   padding: 10px 18px;
-  border: 1px solid #111;
-  background: #111;
-  color: #fff;
-  border-radius: 4px;
+  border: 1px solid var(--color-text);
+  background: var(--color-text);
+  color: var(--color-surface);
+  border-radius: var(--radius);
   cursor: pointer;
+  font-weight: bold;
+  transition: background-color var(--transition), color var(--transition);
 }
 
+/* Efecto hover en botón */
+button:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* =========================================
+   7. FOOTER (Flexbox en columnas)
+   ========================================= */
 footer {
-  padding: 16px 0;
-  text-align: center;
-  background: #fff;
-  border-top: 1px solid #ccc;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-md);
 }
 
-@media (min-width: 600px) {
+.footer-cols {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer-col h4 {
+  margin-bottom: 8px;
+}
+
+.footer-col p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: var(--spacing-sm);
+  background: #eaeaea;
+  font-size: 0.85rem;
+  margin-top: var(--spacing-md);
+}
+
+/* =========================================
+   8. DISEÑO RESPONSIVE (Media Queries exactas)
+   ========================================= */
+
+/* Dispositivos Tablet (768px - 1023px) */
+@media (min-width: 768px) {
   .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
+
+  .footer-cols {
+    flex-direction: row;
+    justify-content: space-between; /* Columnas en footer */
+  }
+  
+  #info img {
+    max-width: 50%;
   }
 }
 
-@media (min-width: 900px) {
+/* Dispositivos Escritorio (1024px en adelante) */
+@media (min-width: 1024px) {
   header .container {
     gap: 0;
   }
@@ -156,163 +294,6 @@ footer {
   }
 
   .gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-
-.form-row > .form-group {
-  flex: 1 1 0;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.form-group label {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.form-group input,
-.form-group textarea {
-  background-color: var(--color-panel);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 1rem;
-  color: var(--color-paper);
-  transition: border-color var(--transition), background-color var(--transition);
-  resize: vertical;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(167, 158, 140, 0.55);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--color-brass);
-  background-color: #211f1b;
-  outline: none;
-}
-
-.contact-form .btn {
-  align-self: flex-start;
-  margin-top: var(--space-xs);
-}
-
-.contact-form .btn:disabled {
-  opacity: 0.7;
-  cursor: default;
-  transform: none;
-}
-
-
-.site-footer {
-  background-color: var(--color-panel);
-  border-top: 1px solid var(--color-border);
-}
-
-.footer-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-lg) var(--space-md);
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: var(--space-md);
-}
-
-.footer-col h4 {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-brass);
-  margin-bottom: var(--space-sm);
-}
-
-.footer-col p {
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
-  margin-top: var(--space-xs);
-}
-
-.footer-col ul li {
-  margin-bottom: var(--space-2xs);
-}
-
-.footer-col ul li a {
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
-  transition: color var(--transition);
-}
-
-.footer-col ul li a:hover,
-.footer-col ul li a:focus-visible {
-  color: var(--color-brass-light);
-}
-
-.footer-col address {
-  font-style: normal;
-  color: var(--color-text-muted);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-.footer-col + .footer-col {
-  border-left: 1px solid var(--color-border);
-  padding-left: var(--space-md);
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--color-border);
-  padding: var(--space-sm) var(--space-md);
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-}
-
-
-@media (min-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr); /* tablet: 2 columnas */
-  }
-
-  .form-row {
-    flex-direction: row;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-col + .footer-col:nth-child(3) {
-    border-left: none;
-    padding-left: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .nav-toggle {
-    display: none;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(3, 1fr); 
-  }
-
-  .footer-inner {
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  }
-
-  .footer-col + .footer-col {
-    border-left: 1px solid var(--color-border);
-    padding-left: var(--space-md);
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
   }
 }

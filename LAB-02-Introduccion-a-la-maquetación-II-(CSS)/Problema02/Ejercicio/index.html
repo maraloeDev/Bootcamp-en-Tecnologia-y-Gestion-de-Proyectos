@@ -35,32 +35,50 @@
         <p>Seis obras simples para ver sin prisa.</p>
         <div class="gallery">
           <article>
-            <img src="https://picsum.photos/seed/obra-01/600/750" alt="Vigilia">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-01/600/750" alt="Vigilia">
+              <div class="overlay"><span>Óleo sobre lienzo, 2023</span></div>
+            </div>
             <h3>Vigilia</h3>
             <p>Arte de Marta Solórzano</p>
           </article>
           <article>
-            <img src="https://picsum.photos/seed/obra-02/600/750" alt="Umbral">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-02/600/750" alt="Umbral">
+              <div class="overlay"><span>Acuarela, 2021</span></div>
+            </div>
             <h3>Umbral</h3>
             <p>Arte de Diego Ferreiro</p>
           </article>
           <article>
-            <img src="https://picsum.photos/seed/obra-03/600/750" alt="Eco de piedra">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-03/600/750" alt="Eco de piedra">
+              <div class="overlay"><span>Escultura en bronce, 2022</span></div>
+            </div>
             <h3>Eco de piedra</h3>
             <p>Arte de Helena Vidal</p>
           </article>
           <article>
-            <img src="https://picsum.photos/seed/obra-04/600/750" alt="Resonancia nocturna">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-04/600/750" alt="Resonancia nocturna">
+              <div class="overlay"><span>Fotografía analógica, 2020</span></div>
+            </div>
             <h3>Resonancia nocturna</h3>
             <p>Arte de Iker Zabala</p>
           </article>
           <article>
-            <img src="https://picsum.photos/seed/obra-05/600/750" alt="Fragmento azul">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-05/600/750" alt="Fragmento azul">
+              <div class="overlay"><span>Acrílico, 2023</span></div>
+            </div>
             <h3>Fragmento azul</h3>
             <p>Arte de Clara Núñez</p>
           </article>
           <article>
-            <img src="https://picsum.photos/seed/obra-06/600/750" alt="Silencio de bronce">
+            <div class="img-container">
+              <img src="https://picsum.photos/seed/obra-06/600/750" alt="Silencio de bronce">
+              <div class="overlay"><span>Técnica mixta, 2019</span></div>
+            </div>
             <h3>Silencio de bronce</h3>
             <p>Arte de Tomás Reyes</p>
           </article>
@@ -69,10 +87,13 @@
     </section>
 
     <section class="section" id="info">
-      <div class="container">
+      <div class="container clearfix">
         <h2>La sala</h2>
         <img src="https://picsum.photos/seed/interior/640/360" alt="Interior de la galería">
-        <p>Somos una galería pequeña. Aquí se ven cuadros y esculturas, y hay un ambiente tranquilo.</p>
+        <p>Somos una galería pequeña ubicada en el corazón de la ciudad. Aquí se ven cuadros y esculturas, y hay un
+          ambiente tranquilo ideal para desconectar de la rutina.</p>
+        <p>Nuestro objetivo es dar visibilidad a artistas emergentes que exploran el contraste entre la luz y la
+          oscuridad, ofreciendo un espacio íntimo para la reflexión del espectador.</p>
       </div>
     </section>
 
@@ -81,24 +102,45 @@
         <h2>Contacto</h2>
         <p>Escribe si quieres saber más o visitar la galería.</p>
         <form>
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+          </div>
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com">
+          </div>
 
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí..."></textarea>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí..."></textarea>
+          </div>
 
-          <button type="submit">Enviar</button>
+          <button type="submit">Enviar mensaje</button>
         </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>Galería Claroscuro · Un sitio simple para arte.</p>
+    <div class="container footer-cols">
+      <div class="footer-col">
+        <h4>Galería Claroscuro</h4>
+        <p>Un sitio simple para arte contemporáneo.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <p>Lunes a Viernes: 10:00 - 20:00</p>
+        <p>Sábados: 10:00 - 14:00</p>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <p><a href="#">Instagram</a> | <a href="#">Twitter</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Galería Claroscuro. Todos los derechos reservados.</p>
     </div>
   </footer>
 </body>

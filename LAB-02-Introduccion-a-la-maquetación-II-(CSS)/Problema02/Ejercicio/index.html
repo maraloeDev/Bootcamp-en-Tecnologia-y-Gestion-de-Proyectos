@@ -12,7 +12,7 @@
 <body>
   <header>
     <div class="container">
-      <h1>Galería Claroscuro</h1>
+      <a href="#inicio"><h1>Galería Claroscuro</h1></a>
       <nav>
         <a href="#galeria">Galería</a>
         <a href="#info">La sala</a>
@@ -104,17 +104,17 @@
         <form>
           <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com">
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
           </div>
 
           <div class="form-group">
             <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí..."></textarea>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí..." required maxlength="55"></textarea>
           </div>
 
           <button type="submit">Enviar mensaje</button>
@@ -140,7 +140,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2023 Galería Claroscuro. Todos los derechos reservados.</p>
+      <p>&copy; 2026 Galería Claroscuro. Todos los derechos reservados.</p>
     </div>
   </footer>
 </body>

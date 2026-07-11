@@ -76,12 +76,31 @@ nav a {
   margin-left: 12px;
   font-size: 0.95rem;
   font-weight: 500;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
 }
 
 /* Efecto hover en enlaces */
-nav a:hover {
+nav a:hover,
+nav a:focus-visible {
   color: #666;
-  text-decoration: underline;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after {
+  width: 100%;
 }
 
 /* =========================================
